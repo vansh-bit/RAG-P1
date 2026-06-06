@@ -25,7 +25,7 @@ from utils import compute_confidence, format_source_chunks, clean_text
 
 # ── Model setup ────────────────────────────────────────────────────────────────
 
-GROQ_MODEL = "llama3-70b-8192"
+GROQ_MODEL = "llama-3.3-70b-versatile"
 
 # HuggingFace model downloaded locally on first run (no API key needed)
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
