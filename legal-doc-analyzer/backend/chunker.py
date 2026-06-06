@@ -13,17 +13,18 @@ from typing import List, Dict, Any
 
 # Patterns that typically mark the start of a new clause or section in legal docs
 CLAUSE_PATTERNS = [
-    r"(?i)^clause\s+\d+[\.\:]",          # "Clause 1." or "Clause 1:"
-    r"(?i)^section\s+\d+[\.\:]",         # "Section 1." or "Section 1:"
-    r"(?i)^article\s+\d+[\.\:]",         # "Article 1." or "Article 1:"
-    r"^\d+\.\s+[A-Z]",                   # "1. Something" — numbered heading
-    r"^\d+\)\s+[A-Z]",                   # "1) Something"
-    r"^[A-Z][A-Z\s]{3,}$",              # ALL CAPS heading like "RENT AND PAYMENT"
-    r"(?i)^schedule\s+[A-Z\d]+",         # "Schedule A", "Schedule 1"
-    r"(?i)^appendix\s+[A-Z\d]+",         # "Appendix A"
+    r"^clause\s+\d+[\.:]",          # "Clause 1." or "Clause 1:"
+    r"^section\s+\d+[\.:]",         # "Section 1." or "Section 1:"
+    r"^article\s+\d+[\.:]",         # "Article 1." or "Article 1:"
+    r"^\d+\.\s+[A-Z]",             # "1. Something" — numbered heading
+    r"^\d+\)\s+[A-Z]",             # "1) Something"
+    r"^[A-Z][A-Z\s]{3,}$",         # ALL CAPS heading like "RENT AND PAYMENT"
+    r"^schedule\s+[A-Z\d]+",        # "Schedule A", "Schedule 1"
+    r"^appendix\s+[A-Z\d]+",        # "Appendix A"
 ]
 
-COMBINED_PATTERN = re.compile("|".join(CLAUSE_PATTERNS), re.MULTILINE)
+# re.IGNORECASE here covers all patterns — Python 3.11 doesn't allow (?i) mid-pattern
+COMBINED_PATTERN = re.compile("|".join(CLAUSE_PATTERNS), re.MULTILINE | re.IGNORECASE)
 
 # Fallback chunking settings
 FALLBACK_CHUNK_SIZE = 500
