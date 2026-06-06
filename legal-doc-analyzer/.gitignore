@@ -1,0 +1,15 @@
+# Never commit secrets
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Node
+frontend/node_modules/
+frontend/build/
+
+# HuggingFace model cache (large files)
+~/.cache/huggingface/

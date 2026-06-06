@@ -13,6 +13,10 @@ Endpoints:
   GET  /health         — simple health check
 """
 
+# Load .env file first — must happen before any other import that reads env vars
+from dotenv import load_dotenv
+load_dotenv()
+
 import io
 from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
